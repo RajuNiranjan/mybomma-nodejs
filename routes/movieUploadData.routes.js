@@ -3,6 +3,6 @@ import { movieUploadDataController } from "../controllers/movieUploadData.contro
 
 const router = express.Router();
 
-router.get("/admin-dashboard", movieUploadDataController);
+router.post("/admin-dashboard", movieUploadDataController);
 
 export default router;
