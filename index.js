@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import MovieUpload from "./routes/movieUploadData.routes.js";
+
 dotenv.config();
 
 mongoose
@@ -12,7 +14,9 @@ const app = express();
 
 const PORT = 5000;
 
-app.get("/", (req, res) => res.send("Hello World"));
+app.get("/", (req, res) => res.send("Hello World, I am home page"));
+
+app.use("/api/adminUploadData", MovieUpload);
 
 app.listen(PORT, () => {
   console.log(`server is running at port number ${PORT}`);
