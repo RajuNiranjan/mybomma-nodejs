@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import MovieUpload from "./routes/movieUploadData.routes.js";
 
 dotenv.config();
@@ -13,13 +14,22 @@ mongoose
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const PORT = 5000;
 
-app.get("/", (req, res) => res.send("Hello World, I am home page"));
+app.listen(PORT, () => {
+  console.log(`server is running at port number ${PORT}`);
+});
 
 app.use("/api/adminUploadData", MovieUpload);
 
-app.listen(PORT, () => {
-  console.log(`server is running at port number ${PORT}`);
+app.use((req, res, next, err) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
 });

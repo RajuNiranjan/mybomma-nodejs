@@ -1,6 +1,6 @@
 import MovieUpload from "../models/movieUploadData.model.js";
 
-export const movieUploadDataController = async (req, res) => {
+export const movieUploadDataController = async (req, res, next) => {
   console.log(req.body);
   const {
     image,
@@ -24,6 +24,10 @@ export const movieUploadDataController = async (req, res) => {
     synopsis,
     description,
   });
-  await newMovieUploadData.save();
-  res.status(201).send("user created sussfully");
+  try {
+    const data = await newMovieUploadData.save();
+    res.json({ data: data, status: true });
+  } catch (error) {
+    next(error);
+  }
 };
