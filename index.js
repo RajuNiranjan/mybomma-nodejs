@@ -2,7 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import MovieUpload from "./routes/movieUploadData.routes.js";
+import MovieUploadRouter from "./routes/movieUploadData.routes.js";
+import SignupRouter from "./routes/signup.routes.js";
 
 dotenv.config();
 
@@ -22,7 +23,9 @@ app.listen(PORT, () => {
   console.log(`server is running at port number ${PORT}`);
 });
 
-app.use("/api/adminUploadData", MovieUpload);
+app.use("/api/adminUploadData", MovieUploadRouter);
+
+app.use("/api/signup", SignupRouter);
 
 app.use((req, res, next, err) => {
   const statusCode = err.statusCode || 500;

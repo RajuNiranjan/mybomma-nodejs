@@ -15,22 +15,18 @@ const movieUploadSchema = new mongoose.Schema(
     year: {
       type: String,
       required: true,
-      unique: true,
     },
     zoner: {
       type: String,
       required: true,
-      unique: true,
     },
     cast: {
       type: String,
       required: true,
-      unique: true,
     },
     director: {
       type: String,
       required: true,
-      unique: true,
     },
     trailer: {
       type: String,
@@ -40,12 +36,10 @@ const movieUploadSchema = new mongoose.Schema(
     synopsis: {
       type: String,
       required: true,
-      unique: true,
     },
     description: {
       type: String,
       required: true,
-      unique: true,
     },
   },
   { timestamps: true }
