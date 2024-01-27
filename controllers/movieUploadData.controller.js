@@ -28,6 +28,6 @@ export const movieUploadDataController = async (req, res, next) => {
     const data = await newMovieUploadData.save();
     res.json({ data: data, status: true });
   } catch (error) {
-    next(error);
+    res.json(error);
   }
 };
