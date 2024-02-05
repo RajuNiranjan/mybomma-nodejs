@@ -31,9 +31,9 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/movies",async (req,res)=>{
-  // let data = await MovieUpload.find({})
+  let data = await MovieUpload.find({})
   return res.send({
-    // "data":data,
+    "data":data,
     "message":"GET Reply from Home Page",
     "params":req.params,
     "query":req.query
