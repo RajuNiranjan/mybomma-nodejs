@@ -26,7 +26,9 @@ export const movieUploadDataController = async (req, res, next) => {
   });
   try {
     const data = await newMovieUploadData.save();
-    res.json({ data: data, status: true });
+
+    const allMovies = await MovieUpload.find({})
+    res.json({ data: data,all_movies:allMovies, status: true });
   } catch (error) {
     res.json(error);
   }
